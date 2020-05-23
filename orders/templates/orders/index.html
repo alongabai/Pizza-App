@@ -1,0 +1,46 @@
+<html>
+  <head>
+    {% load static %}
+    <title>Pizza App By Alon Gabai</title>
+    <link rel="stylesheet" href="{% static 'orders/style.css' %}"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comfortaa">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'orders/index.js' %}"/></script>
+    <script src="https://kit.fontawesome.com/c7958625a3.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script id="toppings" type="text/x-handlebars-template">
+      <div class="toppingsmenu">
+        <div class="row" style="vertical-align:middle;">
+          <div class='col-2'></div>
+          <div class='col-5' style='text-align:center;line-height: 3;font-size:25px;'>
+            {% for topping in toppings %}
+              <a onclick="selectTopping(this)">{{ toppping.name }}</a>&emsp;&emsp;
+            {% endfor %}
+          </div>
+          <img class='col-3' src="{% static 'orders/media/1.png' %}">
+        </div>
+        <a style="float:left;margin-left: 10%;font-size:25px;" onclick="backTopping()">Back</a>
+        <a style="float:right;margin-right: 10%;font-size:25px;" onclick="backTopping()">Next</a>
+      </div>
+    </script>
+    <script id="size" type="text/x-handlebars-template">
+      <div class="row">
+        <img class="col-35">
+        <img src="{% static 'orders/media/1.png' %}" class="col-2" onclick="selectSize('small')">
+        <img src="{% static 'orders/media/1.png' %}" class="col-3" onclick="selectSize('large')">
+      </div>
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+      <i class="fas fa-bars fa-lg" style="margin-right:10%;float:right;"></i>
+      <div style="margin-top:8%; padding:30px; text-align:center;font-size: 75px;">
+        <a class="selectSomething">Select Size</a>
+      </div>
+      <div class="row">
+        <img class="col-35">
+        <img src="{% static 'orders/media/1.png' %}" class="col-2" onclick="selectSize('small')">
+        <img src="{% static 'orders/media/1.png' %}" class="col-3" onclick="selectSize('large')">
+      </div>
+  </body>
+</html>
