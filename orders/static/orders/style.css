@@ -10,7 +10,7 @@
 }
 
 body {
-  background-image: url('{{ STATIC_URL }}orders/media/OGA3ET0.jpg');
+  background-image: url("/static/orders/media/OGA3ET0.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;

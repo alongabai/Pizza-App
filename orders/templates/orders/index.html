@@ -12,9 +12,11 @@
       <div class="toppingsmenu">
         <div class="row" style="vertical-align:middle;">
           <div class='col-2'></div>
-          <div class='col-5' style='text-align:center;line-height: 3;font-size:25px;'>
+          <div class='col-5' style='text-align:center;line-height: 2;font-size:25px;'>
             {% for topping in toppings %}
-              <a onclick="selectTopping(this)">{{ toppping.name }}</a>&emsp;&emsp;
+              <a onclick="selectTopping(this)">
+                {{ topping.name }}
+              </a>&emsp;&emsp;
             {% endfor %}
           </div>
           <img class='col-3' src="{% static 'orders/media/1.png' %}">
