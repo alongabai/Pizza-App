@@ -34,3 +34,7 @@ function backTopping(){
   const post_template = Handlebars.compile(document.querySelector('#size').innerHTML);
   document.querySelector('body').innerHTML += post_template();
 }
+function menutoggle(){
+  alert('hi');
+  $('.cart').toggle();
+}
