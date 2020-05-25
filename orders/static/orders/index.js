@@ -14,7 +14,7 @@ function selectSize(size){
 }
 function selectTopping(topping){
   for( var i = 0; i < order[order.length-1].length; i++){
-    if ( order[order.length-1][i] === $(topping).text()) {
+    if ( order[order.length-1][i] === $(topping).text().replace(/\s/g,'')) {
       order[order.length-1].splice(i, 1);
       $(topping).css("color", "White");
       return 0;
@@ -24,7 +24,7 @@ function selectTopping(topping){
     alert("You already picked 3 toppings, try removing one before adding a new topping");
     return 0;
   }
-  order[order.length-1].push($(topping).text());
+  order[order.length-1].push($(topping).text().replace(/\s/g,''));
   $(topping).css("color", "SpringGreen");
 }
 function backTopping(){
@@ -37,6 +37,15 @@ function backTopping(){
 function openMenu(){
   $('.cart').toggle();
 }
-function deleteItem(){
-  
+function addToCart(){
+  const post_template = Handlebars.compile(document.querySelector('#pizzaOrder').innerHTML);
+  var context = {}
+  for(int i=0; i<order[order.length-1].length;i++){
+    context[i] = order[order.length-1][i];
+  }
+  post = post_template(context);
+  $('#cart').append(post);
+}
+function deleteItem(button){
+  button.parentElement.remove();
 }
