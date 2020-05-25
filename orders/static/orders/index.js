@@ -1,7 +1,7 @@
 var order = [];
 
 function selectToppingStart(){
-  $('.row').remove();
+  $('.selectPizza').remove();
   $('.selectSomething').text("Select Toppings");
   const post_template = Handlebars.compile(document.querySelector('#toppings').innerHTML);
   document.querySelector('body').innerHTML += post_template();
@@ -36,4 +36,7 @@ function backTopping(){
 }
 function openMenu(){
   $('.cart').toggle();
+}
+function deleteItem(){
+  
 }

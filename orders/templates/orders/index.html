@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{% static 'orders/style.css' %}"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comfortaa">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="{% static 'orders/index.js?wh' %}"/></script>
+    <script src="{% static 'orders/index.js?w' %}"/></script>
     <script src="https://kit.fontawesome.com/c7958625a3.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script id="toppings" type="text/x-handlebars-template">
@@ -26,10 +26,16 @@
       </div>
     </script>
     <script id="size" type="text/x-handlebars-template">
-      <div class="row">
+      <div class="row selectPizza">
         <img class="col-35">
         <img src="{% static 'orders/media/1.png' %}" class="col-2" onclick="selectSize('small')">
         <img src="{% static 'orders/media/1.png' %}" class="col-3" onclick="selectSize('large')">
+      </div>
+    </script>
+    <script id="pizzaOrder" type="text/x-handlebars-template">
+      <div class="cartOrder row" style="position:relative;top:15%;">
+        <img src="{% static 'orders/media/1.png' %}" class="col-3">
+        <a style="color:black;" class="col-9">Small Pizza<br><span style="font-size:12px;color:black;">Black olives, Canadian Bacon, Canadian Bacon</span></a>
       </div>
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,12 +44,18 @@
       <div class="cart" style="background-color:white; width:30%; height:100%;position:fixed;top:0;right:0;display:None;">
         <i class="fas fa-bars fa-lg" style="top:6%;left:10%;float:right;color:black;position:absolute;" onclick="openMenu()"></i>
         <span style="left:42%;top:10%;position:absolute;font-size:30px;color:black;">Order:</span>
+        <div class="cartOrder row" style="position:relative;top:15%;">
+          <img src="{% static 'orders/media/1.png' %}" class="col-3">
+          <a style="color:black;" class="col-7">Small Pizza<br><span style="font-size:12px;color:black;">Black olives, Canadian Bacon, Canadian Bacon</span></a>
+          <i class="fas fa-times col-1" style="color:red;" onclick="deleteItem()"></i>
+          <img class="col-1">
+        </div>
       </div>
       <i class="fas fa-bars fa-lg" style="right:7%;top:6%;position:fixed;float:right;" onclick="openMenu()"></i>
       <div style="margin-top:8%; padding:30px; text-align:center;font-size: 75px;">
         <a class="selectSomething">Select Size</a>
       </div>
-      <div class="row">
+      <div class="row selectPizza">
         <img class="col-35">
         <img src="{% static 'orders/media/1.png' %}" class="col-2" onclick="selectSize('small')">
         <img src="{% static 'orders/media/1.png' %}" class="col-3" onclick="selectSize('large')">
