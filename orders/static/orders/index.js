@@ -51,8 +51,9 @@ function addToCart(){
     }
   }
   post = post_template(context);
-  alert(post);
   $('.cart').append(post);
+  $('.cart').toggle();
+  backTopping();
 }
 function deleteItem(button){
   button.parentElement.remove();
