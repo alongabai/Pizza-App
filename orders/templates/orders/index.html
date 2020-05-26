@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{% static 'orders/style.css' %}"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comfortaa">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="{% static 'orders/index.js' %}"/></script>
+    <script src="{% static 'orders/index.js?aabcaabcreaabab' %}"/></script>
     <script src="https://kit.fontawesome.com/c7958625a3.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script id="toppings" type="text/x-handlebars-template">
@@ -35,8 +35,13 @@
     <script id="pizzaOrder" type="text/x-handlebars-template">
       <div class="cartOrder row" style="position:relative;top:15%;">
         <img src="{% static 'orders/media/1.png' %}" class="col-3">
-        <a style="color:black;" class="col-7">{{ 0 }} Pizza</a><br>
-        <span style="font-size:12px;color:black;">{{ 1 }}, {{ 2 }}, {{ 3 }}</span>
+        {% verbatim %}
+        <a style="color:black;" class="col-7">{{ size }} Pizza<br>
+        {{#each toppingsSub}}
+          <span style="font-size:12px;color:black;">{{ this }} </span>
+        {{/each}}
+        </a>
+        {% endverbatim %}
         <i class="fas fa-times col-1" style="color:red;" onclick="deleteItem(this)"></i>
         <img class="col-1">
       </div>

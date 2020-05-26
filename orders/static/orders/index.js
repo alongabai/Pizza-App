@@ -39,12 +39,20 @@ function openMenu(){
 }
 function addToCart(){
   const post_template = Handlebars.compile(document.querySelector('#pizzaOrder').innerHTML);
-  var context = {}
-  for(int i=0; i<order[order.length-1].length;i++){
-    context[i] = order[order.length-1][i];
+  var context = {};
+  context["size"] = order[order.length-1][0].charAt(0).toUpperCase() + order[order.length-1][0].slice(1);
+  context["toppingsSub"] = [];
+  for(var i=1; i<order[order.length-1].length;i++){
+    if(i==order[order.length-1].length-1){
+      context["toppingsSub"].push(order[order.length-1][i]);
+    }
+    else{
+      context["toppingsSub"].push(order[order.length-1][i].concat(','));
+    }
   }
   post = post_template(context);
-  $('#cart').append(post);
+  alert(post);
+  $('.cart').append(post);
 }
 function deleteItem(button){
   button.parentElement.remove();
