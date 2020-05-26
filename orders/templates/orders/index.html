@@ -2,17 +2,17 @@
   <head>
     {% load static %}
     <title>Pizza App By Alon Gabai</title>
-    <link rel="stylesheet" href="{% static 'orders/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'orders/style.css?kj' %}"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comfortaa">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="{% static 'orders/index.js?w' %}"/></script>
+    <script src="{% static 'orders/index.js?wr' %}"/></script>
     <script src="https://kit.fontawesome.com/c7958625a3.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script id="toppings" type="text/x-handlebars-template">
       <div class="toppingsmenu">
-        <div class="row" style="vertical-align:middle;">
+        <div class="row">
           <div class='col-2'></div>
-          <div class='col-5' style='text-align:center;line-height: 2;font-size:20px;'>
+          <div class='col-5 toppinglist'>
             {% for topping in toppings %}
               <a onclick="selectTopping(this)" style="white-space: nowrap;">
                 {{ topping.name }}
@@ -21,8 +21,8 @@
           </div>
           <img class='col-3' src="{% static 'orders/media/1.png' %}">
         </div>
-        <a style="float:left;margin-left: 10%;font-size:25px;" onclick="backTopping()">Back</a>
-        <a style="float:right;margin-right: 10%;font-size:25px;" onclick="addToCart()">Next</a>
+        <a id="backbutton" onclick="backTopping()">Back</a>
+        <a id="nextbutton" onclick="addToCart()">Next</a>
       </div>
     </script>
     <script id="size" type="text/x-handlebars-template">
@@ -33,7 +33,7 @@
       </div>
     </script>
     <script id="pizzaOrder" type="text/x-handlebars-template">
-      <div class="cartOrder row" style="position:relative;top:15%;">
+      <div class="cartOrder row" style="position:relative;">
         <img src="{% static 'orders/media/1.png' %}" class="col-3">
         {% verbatim %}
         <a style="color:black;" class="col-7">{{ size }} Pizza<br>
@@ -51,7 +51,9 @@
   <body style="position:relative;">
       <div class="cart" style="background-color:white; width:30%; height:100%;position:fixed;top:0;right:0;display:None;">
         <i class="fas fa-bars fa-lg" style="top:6%;left:10%;float:right;color:black;position:absolute;" onclick="openMenu()"></i>
-        <span style="left:42%;top:10%;position:absolute;font-size:30px;color:black;">Order:</span>
+        <span style="left:40%;top:10%;position:absolute;font-size:30px;color:black;">Order:</span>
+        <div style="width:100%; height:70%; overflow:auto;top:15%;position:absolute;" class="cartsquare"></div>
+        <div style="padding:2%;left:25%;border-style:solid; position:absolute; top:90%; border-color:black;color:black;text-align:center;font-size:30px;" onclick="finishOrder()">Finish Order</div>
       </div>
       <i class="fas fa-bars fa-lg" style="right:7%;top:6%;position:fixed;float:right;" onclick="openMenu()"></i>
       <div style="margin-top:8%; padding:30px; text-align:center;font-size: 75px;">

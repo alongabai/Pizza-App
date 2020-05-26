@@ -51,7 +51,7 @@ function addToCart(){
     }
   }
   post = post_template(context);
-  $('.cart').append(post);
+  $('.cartsquare').append(post);
   $('.cart').toggle();
   backTopping();
 }
