@@ -53,8 +53,25 @@ function addToCart(){
   post = post_template(context);
   $('.cartsquare').append(post);
   $('.cart').toggle();
-  backTopping();
+  $('.toppingsmenu').remove();
+  $('.selectSomething').text("Select Size");
+  const post_templater = Handlebars.compile(document.querySelector('#size').innerHTML);
+  document.querySelector('body').innerHTML += post_templater();
 }
 function deleteItem(button){
   button.parentElement.remove();
+}
+function checkOut(){
+  alert(order.length);
+  alert(order[0]);
+  if(order.length>0){
+    $.ajax({
+      type: 'POST',
+      url: '/checkout/',
+      data: {'order[]': order},
+    });
+  }
+  else{
+    alert("cart is empty");
+  }
 }
