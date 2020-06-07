@@ -8,11 +8,13 @@ class Pizza(models.Model):
     done = models.BooleanField()
 
     def __str__(self):
-        if topping3 != None:
-            return f"{self.size} pizza w/ {this.topping1}, {this.topping2}, {this.topping3}"
-        elif topping2 != None:
-            return f"{self.size} pizza w/ {this.topping1}, {this.topping2}"
-        return f"{self.size} pizza w/ {this.topping1}, {this.topping2}, {this.topping3}"
+        if self.topping3:
+            return f"{self.size} pizza w/ {self.topping1}, {self.topping2}, {self.topping3}"
+        elif this.topping2:
+            return f"{self.size} pizza w/ {self.topping1}, {self.topping2}"
+        elif this.topping1:
+            return f"{self.size} pizza w/ {self.topping1}"
+        return f"{self.size} pizza w/ no toppings"
 
 class Toppings(models.Model):
     name = models.CharField(max_length=64)

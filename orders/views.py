@@ -1,5 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
+
 
 from .models import Pizza, Toppings
 # Create your views here.
@@ -9,9 +11,13 @@ def index(request):
     }
     return render(request, "orders/index.html", context)
 
+@csrf_exempt
 def checkout(request):
+    print('hi')
     order = request.POST.getlist('order[]')
     for pizza in order:
+        pizza = pizza.split(',')
+        print(len(pizza))
         if len(pizza) == 1:
             pizzaSplit = Pizza(size=pizza[0], done=False)
             pizzaSplit.save()
