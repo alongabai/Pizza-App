@@ -10,9 +10,9 @@ class Pizza(models.Model):
     def __str__(self):
         if self.topping3:
             return f"{self.size} pizza w/ {self.topping1}, {self.topping2}, {self.topping3}"
-        elif this.topping2:
+        elif self.topping2:
             return f"{self.size} pizza w/ {self.topping1}, {self.topping2}"
-        elif this.topping1:
+        elif self.topping1:
             return f"{self.size} pizza w/ {self.topping1}"
         return f"{self.size} pizza w/ no toppings"
 
