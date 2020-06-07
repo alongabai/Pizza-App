@@ -62,13 +62,21 @@ function deleteItem(button){
   button.parentElement.remove();
 }
 function checkOut(){
-  alert(order.length);
-  alert(order[0]);
   if(order.length>0){
+    $("#finishOrderButton").text("Proccessing..");
+    $("#finishOrderButton").unbind("click");
     $.ajax({
       type: 'POST',
       url: '/checkout/',
       data: {'order[]': order},
+      success: function (response) {
+        order = [];
+        $( ".cartOrder" ).each(function() { $(this).remove(); });
+        $("#finishOrderButton").text("Order sent");
+        setTimeout(function(){
+          location.reload();
+        }, 2000);
+      },
     });
   }
   else{

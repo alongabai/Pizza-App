@@ -13,11 +13,9 @@ def index(request):
 
 @csrf_exempt
 def checkout(request):
-    print('hi')
     order = request.POST.getlist('order[]')
     for pizza in order:
         pizza = pizza.split(',')
-        print(len(pizza))
         if len(pizza) == 1:
             pizzaSplit = Pizza(size=pizza[0], done=False)
             pizzaSplit.save()
@@ -30,4 +28,4 @@ def checkout(request):
         if len(pizza) == 4:
             pizzaSplit = Pizza(size=pizza[0], topping1=pizza[1], topping2=pizza[2], topping3=pizza[3], done=False)
             pizzaSplit.save()
-    return HttpResponse("Done")
+    return HttpResponse("Done") #to-do: write done landing

@@ -2,9 +2,9 @@ from django.db import models
 
 class Pizza(models.Model):
     size = models.CharField(max_length=5)
-    topping1 = models.CharField(max_length=64, default=None)
-    topping2 = models.CharField(max_length=64, default=None)
-    topping3 = models.CharField(max_length=64, default=None)
+    topping1 = models.CharField(max_length=64, blank=True, null=True, default=None)
+    topping2 = models.CharField(max_length=64, blank=True, null=True, default=None)
+    topping3 = models.CharField(max_length=64, blank=True, null=True, default=None)
     done = models.BooleanField()
 
     def __str__(self):
